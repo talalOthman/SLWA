@@ -37,4 +37,48 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // Google login
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    // Google call back
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        // $user->token;
+    }
+
+
+    // Facebook login
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    // Facebook call back
+    public function handleFacebookCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        // $user->token;
+    }
+
+
+     // Github login
+     public function redirectToGithub()
+     {
+         return Socialite::driver('github')->redirect();
+     }
+ 
+     // Github call back
+     public function handleGithubCallback()
+     {
+         $user = Socialite::driver('github')->user();
+ 
+         // $user->token;
+     }
 }
