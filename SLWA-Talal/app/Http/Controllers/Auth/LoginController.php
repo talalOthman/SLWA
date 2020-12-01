@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -47,9 +50,12 @@ class LoginController extends Controller
     // Google call back
     public function handleGoogleCallback()
     {
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->stateless()->user();
 
-        // $user->token;
+        $this->_registerOrLoginUser($user);
+
+        //returning home after login
+        return redirect()->route('home');
     }
 
 
@@ -64,7 +70,10 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        // $user->token;
+        $this->_registerOrLoginUser($user);
+
+        //returning home after login
+        return redirect()->route('home');
     }
 
 
@@ -79,6 +88,26 @@ class LoginController extends Controller
      {
          $user = Socialite::driver('github')->user();
  
-         // $user->token;
+         $this->_registerOrLoginUser($user);
+
+         //returning home after login
+         return redirect()->route('home');
+     }
+
+
+     protected function _registerOrLoginUser($info){
+
+        $user = User::where('email', '=', $info->email)->first();
+
+        if(!$user){
+            $user = new User();
+            $user->name = $info->name;
+            $user->email = $info->email;
+            $user->provider_id = $info->id;
+            $user->avatar = $info->avatar;
+            $user->save();
+        }
+
+        Auth::login($user);
      }
 }

@@ -23,9 +23,7 @@ Route::get('login', function(){
      return view('auth.login');
 });
 
-Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
@@ -33,7 +31,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // For google login
 Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
-Route::get('login/github/callback', [LoginController::class, 'handleGoogleCallback']);
+Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']);
 
 // For facebook login
 Route::get('login/facebook', [LoginController::class, 'redirectToFacebook'])->name('login.facebook');
