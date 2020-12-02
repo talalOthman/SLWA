@@ -19,13 +19,66 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        
+        body{
+            background-color: #171B29;
+        }
+
+        .navbar{
+            background-color: #23283d !important;
+        }
+
+        .card{
+            background-color: #23283d !important;
+            
+        }
+        
+        input{
+            background-color: #171B29;
+        }
+
+
+        a, label, h3, p{
+            color: white !important;
+        }
+
+        .navbar-nav > li > .dropdown-menu{
+            background-color: #23283d !important;
+        }
+
+        
+
+        .dropdown-item:hover, .dropdown-menu:hover, .dropdown-menu-right:hover{
+            background-color: #2d3553 !important;
+        }
+
+        .btn-primary{
+            background-color: #FC0441;
+            border: 0px;
+        }
+
+        .btn-primary:hover{
+            
+            background-color: #cf1a48;
+            
+        }
+
+        b:hover{
+            transition: 0.5s;
+            color: #FC0441;
+        }
+
+    
+
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                   <b>S</b>hare <b>L</b>earning <b>W</b>eb <b>A</b>pplication
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -43,13 +96,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}"><b>Login</b></a>
                                 </li>
                             @endif
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"><b>Register</b></a>
                                 </li>
                             @endif
                         @else
