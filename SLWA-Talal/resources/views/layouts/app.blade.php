@@ -91,7 +91,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand title" href="{{ url('/') }}">
-                   <b>S</b>hare <b>L</b>earning <b>W</b>eb <b>A</b>pplication
+                   <b>S</b>hared <b>L</b>earning <b>W</b>eb <b>A</b>pplication
                   <a href="" class="small"> <h3>SLWA </h3> </a>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
