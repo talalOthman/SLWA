@@ -52,7 +52,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        $this->_registerOrLoginUser($user);
+        $this->_LoginUser($user);
 
         //returning home after login
         return redirect()->route('home');
@@ -70,7 +70,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        $this->_registerOrLoginUser($user);
+        $this->_LoginUser($user);
 
         //returning home after login
         return redirect()->route('home');
@@ -88,14 +88,14 @@ class LoginController extends Controller
      {
          $user = Socialite::driver('github')->user();
  
-         $this->_registerOrLoginUser($user);
+         $this->_LoginUser($user);
 
          //returning home after login
          return redirect()->route('home');
      }
 
 
-     protected function _registerOrLoginUser($info){
+     protected function _LoginUser($info){
 
         $user = User::where('email', '=', $info->email)->first();
 
@@ -106,6 +106,7 @@ class LoginController extends Controller
             $user->provider_id = $info->id;
             $user->avatar = $info->avatar;
             $user->save();
+            
         }
 
         Auth::login($user);

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +34,22 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']);
 
-// For facebook login
-Route::get('login/facebook', [LoginController::class, 'redirectToFacebook'])->name('login.facebook');
-Route::get('login/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
+
 
 // For github login
 Route::get('login/github', [LoginController::class, 'redirectToGithub'])->name('login.github');
 Route::get('login/github/callback', [LoginController::class, 'handleGithubCallback']);
+
+
+
+// For google register
+Route::get('register/google', [RegisterController::class, 'redirectToGoogle'])->name('register.google');
+Route::get('register/google/callback', [RegisterController::class, 'handleGoogleCallback']);
+
+
+
+// For github register
+Route::get('register/github', [RegisterController::class, 'redirectToGithub'])->name('register.github');
+Route::get('register/github/callback', [RegisterController::class, 'handleGithubCallback']);
 
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 class RegisterController extends Controller
 {
@@ -64,10 +66,63 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        
+        $avatar = $data['avatar'];
+        $extension = $avatar->getClientOriginalExtension();
+        $avatar_name  = time() . '.' . $extension;
+        $avatar->move(base_path('public/images/avatars/'), $avatar_name);
+
+        $user = new User();
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = Hash::make($data['password']);
+            $user->avatar = $avatar_name;
+            $user->save();
+
+            return $user;
+
+
+            
     }
+
+    // Google register
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    // Google call back
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->stateless()->user();
+
+        $this->_RegisterUser($user);
+
+        //returning home after login
+        return redirect()->route('home');
+    }
+
+
+    
+
+     // Github register
+     public function redirectToGithub()
+     {
+         return Socialite::driver('github')->redirect();
+     }
+ 
+     // Github call back
+     public function handleGithubCallback()
+     {
+         $user = Socialite::driver('github')->user();
+ 
+         $this->_RegisterUser($user);
+
+         //returning home after login
+         return redirect()->route('home');
+     }
+
+     
+
+    
 }

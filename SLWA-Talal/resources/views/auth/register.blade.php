@@ -6,11 +6,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header"><h3>Register</h3></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-3">
+                            <a href="{{ route('register.google')}}" class="btn btn-danger btn-block">Register with Google</a>
+                            
+                            <a href="{{ route('register.github')}}" class="btn btn-dark btn-block">Register with Github</a>
+                            </div>
+                        </div>
+
+                        <p style="text-align: center">OR</p>
+
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -59,6 +70,14 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="avatar" type="file" class="form-control" name="avatar">
                             </div>
                         </div>
 
