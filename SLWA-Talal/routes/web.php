@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +52,8 @@ Route::get('register/google/callback', [RegisterController::class, 'handleGoogle
 // For github register
 Route::get('register/github', [RegisterController::class, 'redirectToGithub'])->name('register.github');
 Route::get('register/github/callback', [RegisterController::class, 'handleGithubCallback']);
+
+
+Route::get('profile', [UserController::class, 'profile']);
 
 

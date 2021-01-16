@@ -1,0 +1,67 @@
+
+
+
+body{
+    background-color: #171B29;
+}
+
+.navbar{
+    background-color: #23283d !important;
+}
+
+.card{
+    background-color: #23283d !important;
+    
+}
+
+input{
+    background-color: #171B29;
+}
+
+
+a, label, h3, p, h2, h4{
+    color: white !important;
+}
+
+.headsetting, h6{
+    color:#FC0441
+}
+
+.navbar-nav > li > .dropdown-menu{
+    background-color: #23283d !important;
+}
+
+
+
+.dropdown-item:hover, .dropdown-menu:hover, .dropdown-menu-right:hover{
+    background-color: #2d3553 !important;
+}
+
+.btn-primary{
+    background-color: #FC0441;
+    border: 0px;
+}
+
+.btn-primary:hover{
+    
+    background-color: #cf1a48;
+    
+}
+
+b:hover{
+    transition: 0.5s;
+    color: #FC0441;
+}
+
+.small{
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .small {
+        display: block;
+}
+    .title{
+        display: none;
+    }
+}
