@@ -123,7 +123,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 
-                                @if (Auth::user()->provider_id == null)
+                                @if (Auth::user()->provider_id == null || Auth::user()->changePicture == "true")
                                 <img src="images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: auto; float:left; margin-right: 7px;">
                                 
                                 @else
@@ -137,6 +137,12 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
+
+                                    <a class="dropdown-item" href="{{ url('home') }}">
+                                        <i class="fa fa-home"></i>
+                                        Home
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ url('profile') }}">
                                         <i class="fa fa-user"></i>
                                         Profile

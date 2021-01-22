@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,15 @@ Route::get('register/github', [RegisterController::class, 'redirectToGithub'])->
 Route::get('register/github/callback', [RegisterController::class, 'handleGithubCallback']);
 
 
+Route::post('profile', [UserController::class, 'updateUserData']);
 Route::get('profile', [UserController::class, 'profile']);
+
+Route::get('UpdatePassword', function(){
+    return view('UpdatePassword');
+});
+
+Route::get('UpdatePassword', [ChangePasswordController::class, 'index'])->name('password.change');
+
+Route::post('UpdatePassword', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 
 
