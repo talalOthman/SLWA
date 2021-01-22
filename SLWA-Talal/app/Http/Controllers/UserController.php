@@ -54,19 +54,21 @@ class UserController extends Controller
             'newpassword' => ['string', 'min:8', 'confirmed'],
         ]);
 
-
+        $user = Auth::user();
         $avatar_name = null;
+        
 
         if($req->hasFile('avatar')){
             $avatar = $req->file('avatar');
             $extension = $avatar->getClientOriginalExtension();
             $avatar_name  = time() . '.' . $extension;
             $avatar->move(base_path('public/images/avatars/'), $avatar_name);
+            $user->changePicture = "true";
         }
 
        
 
-            $user = Auth::user();
+            
 
             if($avatar_name !== null){
             $user->avatar = $avatar_name;
@@ -76,7 +78,8 @@ class UserController extends Controller
             $user->email = $req->email;
             $user->username = $req->username;
             
-            $user->changePicture = "true";
+            
+            
 
             $user->save();
         

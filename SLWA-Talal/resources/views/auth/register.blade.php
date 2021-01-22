@@ -79,7 +79,8 @@
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
-                                <input id="avatar" type="file" class="form-control" name="avatar" required> 
+                                <input type="file" name="avatar" id="file" class="btn btn-primary inputfile" data-multiple-caption="{count} files selected" multiple />
+                                <label for="file" class="btn btn-primary"><i class="fa fa-fw fa-camera"></i> Upload Image</label>
                             </div>
                         </div>
 

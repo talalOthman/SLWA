@@ -20,72 +20,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        
-        body{
-            background-color: #171B29;
-        }
-
-        .navbar{
-            background-color: #23283d !important;
-        }
-
-        .card{
-            background-color: #23283d !important;
-            
-        }
-        
-        input{
-            background-color: #171B29;
-        }
-
-
-        a, label, h3, p{
-            color: white !important;
-        }
-
-        .navbar-nav > li > .dropdown-menu{
-            background-color: #23283d !important;
-        }
-
-        
-
-        .dropdown-item:hover, .dropdown-menu:hover, .dropdown-menu-right:hover{
-            background-color: #2d3553 !important;
-        }
-
-        .btn-primary{
-            background-color: #FC0441;
-            border: 0px;
-        }
-
-        .btn-primary:hover{
-            
-            background-color: #cf1a48;
-            
-        }
-
-        b:hover{
-            transition: 0.5s;
-            color: #FC0441;
-        }
-
-        .small{
-            display: none;
-        }
-
-        @media (max-width: 760px) {
-            .small {
-	            display: block;
-        }
-            .title{
-                display: none;
-            }
-}
-
-    
-
-    </style>
 </head>
 <body>
     <div id="app">
@@ -124,10 +58,10 @@
                             <li class="nav-item dropdown">
                                 
                                 @if (Auth::user()->provider_id == null || Auth::user()->changePicture == "true")
-                                <img src="images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: auto; float:left; margin-right: 7px;">
+                                <img src="images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: 39px; float:left; margin-right: 7px;">
                                 
                                 @else
-                                <img src={{Auth::user()->avatar}} alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: auto; float:left; margin-right: 7px;">
+                                <img src={{Auth::user()->avatar}} alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: 39px; float:left; margin-right: 7px;">
                                 
                                 @endif
                                 

@@ -19,10 +19,10 @@
                   <div class="mx-auto" style="width: 140px;">
                     <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
                         @if (Auth::user()->provider_id == null || Auth::user()->changePicture == "true")
-                        <img src="images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" class="d-flex justify-content-center align-items-center rounded" style="height: 140px;">
+                        <img src="images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" class="d-flex justify-content-center align-items-center rounded" style="height: 140px; width: 140px">
                         
                         @else
-                        <img src={{Auth::user()->avatar}} alt="{{ Auth::user()->name}}" class="d-flex justify-content-center align-items-center rounded" style="height: 140px;" >
+                        <img src={{Auth::user()->avatar}} alt="{{ Auth::user()->name}}" class="d-flex justify-content-center align-items-center rounded" style="height: 140px; width: 140px">
                         
                         @endif
                     </div>
@@ -31,7 +31,16 @@
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ Auth::user()->name}}</h4>
+
+                    @if(Auth::user()->username == null)
+                    <p class="mb-0 username">{{ Auth::user()->email}}</p>
+
+                    @else
                     <p class="mb-0 username"><i>@</i>{{ Auth::user()->username}}</p>
+
+                    @endif
+
+
                     <div class="text-muted"><small> Active</small></div>
                     <div class="mt-2">
 
