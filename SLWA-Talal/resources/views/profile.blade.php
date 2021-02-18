@@ -47,7 +47,7 @@
                         <form class="form" enctype="multipart/form-data" action="/profile" method="POST">
                             @csrf
                       
-                      <input type="file" name="avatar" id="file" class="btn btn-primary inputfile" data-multiple-caption="{count} files selected" multiple />
+                      <input type="file" name="avatar" id="file" class="btn btn-primary inputfile" accept="image/*" data-multiple-caption="{count} files selected" multiple />
                       <label for="file" class="btn btn-primary"><i class="fa fa-fw fa-camera"></i> Change Image</label>
                       
                     
