@@ -67,6 +67,12 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Update Password') }}
                                 </button>
+                                
+                                
+                                <a class="btn btn-primary" href={{url('profile')}}>
+                                  <i class="fa fa-undo"></i>
+                                  Back     
+                                </a>
                             </div>
                         </div>
                     </form>
