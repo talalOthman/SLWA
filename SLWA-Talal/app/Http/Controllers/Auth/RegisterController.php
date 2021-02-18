@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -85,6 +87,23 @@ class RegisterController extends Controller
             
     }
 
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath())->with('successMsg', "Account created successfully");
+    }
+
     // Google register
     public function redirectToGoogle()
     {
@@ -98,7 +117,7 @@ class RegisterController extends Controller
 
         $this->_RegisterUser($user);
 
-        //returning home after login
+        //returning home after register
         return redirect()->route('home');
     }
 
@@ -122,7 +141,27 @@ class RegisterController extends Controller
          return redirect()->route('home');
      }
 
+
+
+     protected function _RegisterUser($info){
+
+    
+
+        
+            $user = new User();
+            $user->name = $info->name;
+            $user->email = $info->email;
+            $user->provider_id = $info->id;
+            $user->avatar = $info->avatar;
+            
+            $user->save();
+            
+
+        Auth::login($user);
+     }
+}
+
      
 
     
-}
+

@@ -9,6 +9,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+
 class LoginController extends Controller
 {
     /*
@@ -52,29 +53,20 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        $this->_LoginUser($user);
+       
+
+        $value = $this->_LoginUser($user);
+
+        if($value == "new account"){
+            return redirect()->route('home')->with('successMsg', "Account created successfully");
+            
+        }
 
         //returning home after login
         return redirect()->route('home');
     }
 
 
-    // Facebook login
-    public function redirectToFacebook()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-
-    // Facebook call back
-    public function handleFacebookCallback()
-    {
-        $user = Socialite::driver('facebook')->user();
-
-        $this->_LoginUser($user);
-
-        //returning home after login
-        return redirect()->route('home');
-    }
 
 
      // Github login
@@ -87,11 +79,18 @@ class LoginController extends Controller
      public function handleGithubCallback()
      {
          $user = Socialite::driver('github')->user();
+
+         $value = $this->_LoginUser($user);
  
          $this->_LoginUser($user);
 
-         //returning home after login
-         return redirect()->route('home');
+         if($value == "new account"){
+            return redirect()->route('home')->with('successMsg', "Account created successfully");
+            
+        }
+
+        //returning home after login
+        return redirect()->route('home');
      }
 
 
@@ -105,10 +104,17 @@ class LoginController extends Controller
             $user->email = $info->email;
             $user->provider_id = $info->id;
             $user->avatar = $info->avatar;
+            
             $user->save();
+            Auth::login($user);
+            return "new account";
             
         }
 
         Auth::login($user);
+        return "old account";
      }
+
+
+     
 }

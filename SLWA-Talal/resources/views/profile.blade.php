@@ -128,13 +128,27 @@
         <div class="card">
           <div class="card-body">
             <h6 class="card-title font-weight-bold">Change Password</h6>
-            <p class="card-text">Easy way to update your password</p>
+
+            @if (Auth::user()->provider_id != null){
+            <p class="card-text">Not allowed to update password</p>
+            <a class="btn btn-secondary">
+              <i class="fa fa-wrench"></i>
+              Update Password 
+            </a>
+            }
+
+            @else{
+              <p class="card-text">Easy way to update your password</p>
             <a class="btn btn-primary" href={{url('UpdatePassword')}}>
+              <i class="fa fa-wrench"></i>
+              Update Password 
+                     
+            </a>
+            }
+
+            @endif
           
-                <i class="fa fa-wrench"></i>
-                Update Password 
-                       
-              </a>
+               
           </div>
         </div>
       </div>
