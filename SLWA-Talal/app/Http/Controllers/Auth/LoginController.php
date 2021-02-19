@@ -52,9 +52,6 @@ class LoginController extends Controller
     public function handleGoogleCallback()
     {
         $user = Socialite::driver('google')->stateless()->user();
-
-       
-
         $value = $this->_LoginUser($user);
 
         if($value == "new account"){
@@ -79,10 +76,7 @@ class LoginController extends Controller
      public function handleGithubCallback()
      {
          $user = Socialite::driver('github')->user();
-
          $value = $this->_LoginUser($user);
- 
-         $this->_LoginUser($user);
 
          if($value == "new account"){
             return redirect()->route('home')->with('successMsg', "Account created successfully");
