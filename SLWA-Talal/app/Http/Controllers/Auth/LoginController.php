@@ -95,6 +95,11 @@ class LoginController extends Controller
         if(!$user){
             $user = new User();
             $user->name = $info->name;
+
+            if($user->name == null){
+                $user->name = $info->email;
+            }
+            
             $user->email = $info->email;
             $user->provider_id = $info->id;
             $user->avatar = $info->avatar;
