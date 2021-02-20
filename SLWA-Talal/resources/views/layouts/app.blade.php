@@ -11,15 +11,30 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.css"/>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Icons font CSS-->
+    <link rel="stylesheet" type="text/css" href="/template/vendor/mdi-font/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/template/vendor/font-awesome-4.7/css/font-awesome.min.css">
+
+    <!-- Font special for pages-->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+
+    <!-- Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="/template/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/template/vendor/datepicker/daterangepicker.css">
+
 </head>
 <body>
     <div id="app">

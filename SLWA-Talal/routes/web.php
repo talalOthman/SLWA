@@ -6,6 +6,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Http\Controllers\FullcalendarController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ExternalEventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,16 @@ Route::get('login', function(){
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//for calendar
+Route::post('/home/create', [FullCalendarController::class, 'insert']);
+Route::get('/home/addEvent', function(){
+    return view('addevent');
+});
+Route::post('/home/update', [FullCalendarController::class, 'update']);
+Route::get('/home/delete1', [FullCalendarController::class, 'deleteRedirect']);
+Route::get('/home/delete2/{id}', [FullCalendarController::class, 'delete']);
+
 
 // For google login
 Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
@@ -67,3 +80,12 @@ Route::get('UpdatePassword', [ChangePasswordController::class, 'index'])->name('
 Route::post('UpdatePassword', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 
 
+
+
+//For external events page
+Route::get('api', [ExternalEventsController::class, 'index']);
+Route::get('api/button/{id}',[FullCalendarController::class, 'insertApi']);
+
+
+//For notifications
+Route::get('send', 'NotificationController@sendNotification');

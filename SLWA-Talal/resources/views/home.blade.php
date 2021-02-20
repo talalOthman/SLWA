@@ -27,8 +27,22 @@
                         </div>
                     @endif
 
-                    <p>You are logged in!</p> 
+                    <p>You are logged in!
+                    <a href="/home/addEvent"><button>
+                    Add Event
+                    </button></a>
+                    <a href="/home/delete1"><button>
+                    Delete Event
+                    </button></a>
+                    </button></a>
+                    <a href="/api"><button>
+                    View External Events
+                    </button></a>
+                    </p> 
+                    {!!$calendar->calendar()!!}
+                    {!!$calendar->script()!!}
                 </div>
+                
             </div>
         </div>
     </div>
