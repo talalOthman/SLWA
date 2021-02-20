@@ -28,7 +28,7 @@
 						<tbody>
                             <!-- foreach loop should be here -->
                             @foreach($event as $item)
-                            <form method="PUT" action="http://localhost:8000/home/delete2/{{$item->id}}" enctype="multipart/form-data">
+                            <form method="PUT" action="http://slwa.herokuapp.com/home/delete2/{{$item->id}}" enctype="multipart/form-data">
 							<tr class="row100">
 								<td class="column100 column1" data-column="column1">{{$item->title}}</td>
 								<td class="column100 column3" data-column="column3"></td>
