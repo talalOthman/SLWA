@@ -88,4 +88,4 @@ Route::get('api/button/{id}',[FullCalendarController::class, 'insertApi']);
 
 
 //For notifications
-Route::get('send', 'NotificationController@sendNotification');
+Route::get('send', [NotificationController::class, 'sendNotification']);

@@ -14,6 +14,8 @@ use Notification;
 
 use App\Notifications\eventAdded;
 
+use Auth;
+
   
 
 class NotificationController extends Controller
@@ -64,13 +66,12 @@ class NotificationController extends Controller
 
     {
 
-        $user = User::first();
+        $user = Auth::user();
 
   
-
         $details = [
 
-            'greeting' => 'Hi '.$user.name(),
+            'greeting' => 'Hi ',
 
             'body' => 'You have successfully added your event',
 
@@ -80,7 +81,7 @@ class NotificationController extends Controller
 
             'actionURL' => url('/'),
 
-            'order_id' => 101
+            'notif_id' => rand(100000,1000000)
 
         ];
 

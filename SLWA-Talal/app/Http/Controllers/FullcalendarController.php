@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Models\events;
 use \Calendar;
 use App\Models\movies;
 use \Carbon\Carbon;
 use Auth;
+use Notifications;
+use App\Http\Notifications\EventsNotification;
+
 
 
 class FullcalendarController extends Controller
@@ -35,7 +39,9 @@ class FullcalendarController extends Controller
         $event->user=Auth::user()->email;
         $event->save();
 
-        return redirect()->route('home');
+        
+
+        return redirect()->route('home')->with('successMsg', "Event inserted successfully");
     }
 
     public function insertApi($id){
@@ -47,6 +53,8 @@ class FullcalendarController extends Controller
         $event->description = "null";
         $event->user=Auth::user()->email;
         $event->save();
+
+        
 
         return redirect()->route('home')->with('successMsg', "Event inserted successfully");
     }
@@ -78,9 +86,15 @@ class FullcalendarController extends Controller
     }
 
     public function delete($id){
+        //$data = events::find($id);
         $data = events::where('id', $id);
         $data->delete();
-        return redirect()->route('home');
+//
+        
+
+
+//
+        return redirect()->route('home')->with('successMsg', "Event Deleted successfully");
     }
 
 
