@@ -48,7 +48,7 @@ class FullcalendarController extends Controller
         $event->user=Auth::user()->email;
         $event->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('successMsg', "Event inserted successfully");
     }
 
     public function update(Request $request){
