@@ -28,7 +28,7 @@
 						<tbody>
                             <!-- foreach loop should be here -->
                             @foreach($movie as $item)
-                            <form method="PUT" action="http://localhost:8000/api/button/{{$item->id}}" enctype="multipart/form-data">
+                            <form method="PUT" action="/api/button/{{$item->id}}" enctype="multipart/form-data">
 							<tr class="row100">
 								<td class="column100 column1" data-column="column1">{{$item->title}}</td>
 								<td class="column100 column3" data-column="column3">{{$item->country}}</td>
