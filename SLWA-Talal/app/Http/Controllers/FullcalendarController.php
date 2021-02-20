@@ -78,7 +78,7 @@ class FullcalendarController extends Controller
     }
 
     public function delete($id){
-        $data = events::find($id);
+        $data = events::where('id', $id);
         $data->delete();
         return redirect()->route('home');
     }
