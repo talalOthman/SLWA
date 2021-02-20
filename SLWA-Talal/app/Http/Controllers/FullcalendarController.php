@@ -9,9 +9,9 @@ use \Calendar;
 use App\Models\movies;
 use \Carbon\Carbon;
 use Auth;
-use Notifications;
-use App\Http\Notifications\EventsNotification;
-
+use Notification;
+use App\Notifications\EventsNotification;
+use Illuminate\Notifications\Notifiable;
 
 
 class FullcalendarController extends Controller
@@ -39,7 +39,20 @@ class FullcalendarController extends Controller
         $event->user=Auth::user()->email;
         $event->save();
 
-        
+        $details = [
+
+            'greeting' => 'Hi ',
+
+            'body' => 'You have successfully added your event '.$event->title,
+
+            'thanks' => 'Thank you for using our services',
+
+            'notif_id' => rand(100000,1000000)
+
+        ];
+
+        $user = auth()->user();
+        Notification::send($user, new EventsNotification());
 
         return redirect()->route('home')->with('successMsg', "Event inserted successfully");
     }
@@ -54,7 +67,9 @@ class FullcalendarController extends Controller
         $event->user=Auth::user()->email;
         $event->save();
 
-        
+
+        $user = auth()->user();
+        Notification::send($user, new EventsNotification());
 
         return redirect()->route('home')->with('successMsg', "Event inserted successfully");
     }
@@ -88,9 +103,10 @@ class FullcalendarController extends Controller
     public function delete($id){
         //$data = events::find($id);
         $data = events::where('id', $id);
-        $data->delete();
-//
         
+//
+        $user = auth()->user();
+        Notification::send($user, new EventsNotification());
 
 
 //

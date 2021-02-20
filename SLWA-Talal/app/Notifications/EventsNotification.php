@@ -10,16 +10,15 @@ use Illuminate\Notifications\Notification;
 class EventsNotification extends Notification
 {
     use Queueable;
-    private $notifData;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($notifData)
+    public function __construct()
     {
-        $this-$notifData = $notifData;
+
     }
 
     /**
@@ -42,11 +41,21 @@ class EventsNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->name($this->notiflData['name'])
-                    ->line($this->notifData['body'])
-                    ->line($this->notifData['thanks']);
+
+                    ->line('Hi! ')
+                    ->line('You have successfully added your event: ')
+                    ->line('Thank you for using our services.');
     }
     
+
+
+    public function toDatabase($notifiable){
+        return [
+            'data' => 'An event was added successfully: '
+        ];
+                    
+    }
+
 
     /**
      * Get the array representation of the notification.
@@ -54,10 +63,5 @@ class EventsNotification extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
-    {
-        return [
-            'notif_id' => $this->notifData['notif_id']
-        ];
-    }
+
 }
