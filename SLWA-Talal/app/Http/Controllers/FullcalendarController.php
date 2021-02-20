@@ -109,7 +109,8 @@ class FullcalendarController extends Controller
         Notification::send($user, new EventsNotification());
 
 
-//
+//      
+        $data->delete();
         return redirect()->route('home')->with('successMsg', "Event Deleted successfully");
     }
 
