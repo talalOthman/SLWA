@@ -73,10 +73,13 @@
                             <li class="nav-item dropdown">
                                 
                                 @if (Auth::user()->provider_id == null || Auth::user()->changePicture == "true")
-                                <img src="/images/avatars/{{Auth::user()->avatar}}" alt="/images/avatars/default.png" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: 39px; float:left; margin-right: 7px;">
+                                <img src="/images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: 39px; float:left; margin-right: 7px;">
                                 
+                                @elseif(Auth::user()->avatar == null)
+                                <img src="/images/avatars/default.png" alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: 39px; float:left; margin-right: 7px;">
+
                                 @else
-                                <img src={{Auth::user()->avatar}} alt="/images/avatars/default.png" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: 39px; float:left; margin-right: 7px;">
+                                <img src={{Auth::user()->avatar}} alt="{{ Auth::user()->name}}" style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: 39px; float:left; margin-right: 7px;">
                                 
                                 @endif
                                 
