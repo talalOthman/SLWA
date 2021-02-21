@@ -35,7 +35,7 @@
 								<td class="column100 column4" data-column="column4">{{$item->city}}</td>
 								<td class="column100 column5" data-column="column5">{{$item->start}}</td>
 								<td class="column100 column6" data-column="column6">{{$item->end}}</td>
-								<td class="column100 column8" data-column="column8"> <input type="submit" class="fas fa-check-circle" value="Add"></input> </td>
+								<td class="column100 column8" data-column="column8"> <input type="submit" class="black-circle" value="Add">Select</input> </td>
                             </tr>
                             </form>
                             @endforeach
