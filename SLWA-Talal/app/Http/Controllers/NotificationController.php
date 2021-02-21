@@ -10,6 +10,7 @@ class NotificationController extends Controller
 {
 
     function index(){
+        $data = [];
         $notiflist = auth()->user()->unreadNotifications;
         $list = [];
         $i=0;
