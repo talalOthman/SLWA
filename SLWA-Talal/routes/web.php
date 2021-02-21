@@ -44,6 +44,9 @@ Route::post('/home/update', [FullCalendarController::class, 'update']);
 Route::get('/home/delete1', [FullCalendarController::class, 'deleteRedirect']);
 Route::get('/home/delete2/{id}', [FullCalendarController::class, 'delete']);
 
+//for notifications page
+Route::get('/notification', [NotificationController::class, 'index']);
+
 
 // For google login
 Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');

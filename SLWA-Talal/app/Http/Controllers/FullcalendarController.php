@@ -11,6 +11,7 @@ use \Carbon\Carbon;
 use Auth;
 use Notification;
 use App\Notifications\EventsNotification;
+use App\Notifications\EventsNotification2;
 use Illuminate\Notifications\Notifiable;
 
 
@@ -106,10 +107,10 @@ class FullcalendarController extends Controller
         
 //
         $user = auth()->user();
-        Notification::send($user, new EventsNotification());
+        Notification::send($user, new EventsNotification2());
 
 
-//      
+//
         $data->delete();
         return redirect()->route('home')->with('successMsg', "Event Deleted successfully");
     }

@@ -92,6 +92,11 @@
                                         Home
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ url('notification') }}">
+                                        <i class="fa fa-home"></i>
+                                        Notifications
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ url('profile') }}">
                                         <i class="fa fa-user"></i>
                                         Profile
