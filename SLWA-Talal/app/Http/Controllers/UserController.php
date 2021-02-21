@@ -75,9 +75,9 @@ class UserController extends Controller
             }
 
             if($req->name == null){
-                return redirect()->route('profile')->with('errorMsg', 'Name can not be empty');
+                return redirect()->back()->with('errorMsg', "Full name can't be empty");
             }
-            
+
             $user->name = $req->name;
             $user->email = $req->email;
             $user->username = $req->username;
