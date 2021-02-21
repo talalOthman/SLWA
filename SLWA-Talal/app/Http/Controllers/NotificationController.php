@@ -21,6 +21,9 @@ class NotificationController extends Controller
             $i++;
         }
         
+        if($data==NULL){
+            return redirect()->route('home')->with('errorMsg', "There are no notifications yet");
+        }
         return view('notification', compact('data'));
     }
     
