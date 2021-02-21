@@ -77,7 +77,7 @@ Route::get('UpdatePassword', function(){
 
 Route::get('UpdatePassword', [ChangePasswordController::class, 'index'])->name('password.change');
 
-Route::post('UpdatePassword', [ChangePasswordController::class, 'changePassword'])->name('password.update');
+Route::post('UpdatePassword', [ChangePasswordController::class, 'changePassword'])->name('password.upgrade');
 
 
 

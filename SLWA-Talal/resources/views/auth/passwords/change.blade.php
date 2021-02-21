@@ -13,14 +13,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <i class="mdi mdi-check-all"></i>
-                <strong>Oh snap! </strong>{{session('errorMsg')}}
+                <strong>Oh snap! </strong>{{session('errorMsg')}} 
             </div>
         @endif
             <div class="card">
                 <div class="card-header"><h3>Update Password</h3></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" action="{{ route('password.upgrade') }}">
                         @csrf
 
 
