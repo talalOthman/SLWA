@@ -27,7 +27,7 @@
             <strong>Oh snap! </strong>{{session('errorMsg')}} 
         </div>
         @endif
-        
+
     <div class="row">
       <div class="col mb-3">
         <div class="card">
@@ -38,7 +38,7 @@
                   <div class="mx-auto" style="width: 140px;">
                     <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
                         @if (Auth::user()->provider_id == null || Auth::user()->changePicture == "true")
-                        <img src="images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" class="d-flex justify-content-center align-items-center rounded" style="height: 140px; width: 140px">
+                        <img src="images/avatars/{{Auth::user()->avatar}}" alt="{{ Auth::user()->name}}" onerror="this.src='/images/avatars/default.png';" class="d-flex justify-content-center align-items-center rounded" style="height: 140px; width: 140px">
                         
                         @else
                         <img src={{Auth::user()->avatar}} alt="{{ Auth::user()->name}}" class="d-flex justify-content-center align-items-center rounded" style="height: 140px; width: 140px">
