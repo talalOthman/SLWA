@@ -148,6 +148,13 @@ th, td {
   padding-bottom: 14px;
 }
 
+.column100 .column8{
+  color: white !important;
+}
+
+
+
+
 
 /*==================================================================
 [ Ver1 ]*/
@@ -171,12 +178,10 @@ th, td {
 
 .table100.ver1 .row100:hover {
   background-color: #484848;
-  color: white;
 }
 
 .table100.ver1 .hov-column-ver1 {
   background-color: #484848;
-  color: white;
 }
 
 .table100.ver1 .hov-column-head-ver1 {
