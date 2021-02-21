@@ -9,6 +9,25 @@
   
 
   <div class="col">
+    @if(session('successMsg'))
+    <div class="alert alert-icon alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <i class="mdi mdi-check-all"></i>
+        <strong>Well done! </strong>{{session('successMsg')}}
+    </div>
+
+    @elseif(session('errorMsg'))
+        <div class="alert alert-icon alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <i class="mdi mdi-check-all"></i>
+            <strong>Oh snap! </strong>{{session('errorMsg')}} 
+        </div>
+        @endif
+        
     <div class="row">
       <div class="col mb-3">
         <div class="card">
