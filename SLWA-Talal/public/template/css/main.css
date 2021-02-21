@@ -186,15 +186,6 @@ th, td {
   color: #fff;
 }
 
-.black-circle {
-  transition-duration: 0.4s;
-}
-
-.black-circle:hover {
-  background-color: #6c7ae0; 
-  color: white;
-}
-
 /*==================================================================
 [ Ver2 ]*/
 .table100.ver2 td {
